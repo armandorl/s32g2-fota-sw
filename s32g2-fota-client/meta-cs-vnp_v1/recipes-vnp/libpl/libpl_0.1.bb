@@ -10,14 +10,14 @@ SRC_URI = " \
 
 S = "${WORKDIR}/source"
 
-EXTRA_OEMAKE_append = " DESTDIR=${D}"
+EXTRA_OEMAKE:append = " DESTDIR=${D}"
 
 do_install() {
     oe_runmake install
 	cd ${D}${libdir} && ln -s libpl.so libpl.so.1
 }
 
-FILES_${PN} = "${includedir}/* ${libdir}/lib*.so"
-FILES_${PN}-dev = "${libdir}/lib*.so.1"
-INSANE_SKIP_${PN} = "ldflags"
-INSANE_SKIP_${PN}-dev = "ldflags"
+FILES:${PN} = "${includedir}/* ${libdir}/lib*.so"
+FILES:${PN}-dev = "${libdir}/lib*.so.1"
+INSANE_SKIP:${PN} = "ldflags"
+INSANE_SKIP:${PN}-dev = "ldflags"

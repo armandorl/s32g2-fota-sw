@@ -12,7 +12,7 @@ DEPENDS = "ipc-shm"
 SRC_URI = "file://source/"
 
 S = "${WORKDIR}/source"
-EXTRA_OEMAKE_append = " KDIR=${KBUILD_OUTPUT} INSTALL_DIR=${D}"
+EXTRA_OEMAKE:append = " KDIR=${KBUILD_OUTPUT} INSTALL_DIR=${D}"
 
 module_do_compile() {
 	unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
@@ -28,12 +28,12 @@ module_do_compile() {
 
 #KERNEL_MODULE_AUTOLOAD += "ipc-main ipc-vnet"
 
-FILES_${PN} += "${base_libdir}/*"
-FILES_${PN} += "${sysconfdir}/modules-load.d/*"
+FILES:${PN} += "${base_libdir}/*"
+FILES:${PN} += "${sysconfdir}/modules-load.d/*"
 
 PROVIDES = "kernel-module-ipc-main${KERNEL_MODULE_PACKAGE_SUFFIX} \
 		kernel-module-ipc-vnet${KERNEL_MODULE_PACKAGE_SUFFIX}"
-RPROVIDES_${PN} = "kernel-module-ipc-main${KERNEL_MODULE_PACKAGE_SUFFIX} \
+RPROVIDES:${PN} = "kernel-module-ipc-main${KERNEL_MODULE_PACKAGE_SUFFIX} \
 		kernel-module-ipc-vnet${KERNEL_MODULE_PACKAGE_SUFFIX}"
 
 COMPATIBLE_MACHINE = "gen1"

@@ -21,9 +21,9 @@ INSTALL_DIR = "${D}/${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/
 FW_INSTALL_DIR = "${D}/${base_libdir}/firmware/rtlwifi"
 FW_INSTALL_NAME ?= "rtl8188eufw.bin"
 
-EXTRA_OEMAKE_append = " KSRC=${KBUILD_OUTPUT}"
+EXTRA_OEMAKE:append = " KSRC=${KBUILD_OUTPUT}"
 
-module_do_install_append() {
+module_do_install:append() {
 	mkdir -p "${INSTALL_DIR}"
 	mkdir -p "${FW_INSTALL_DIR}"
 	
@@ -33,11 +33,11 @@ module_do_install_append() {
 	cp -f "${MDIR}/${FW_INSTALL_NAME}" "${FW_INSTALL_DIR}/${FW_INSTALL_NAME}"
 }
 
-FILES_${PN} += "${base_libdir}/*"
-FILES_${PN} += "${sysconfdir}/modules-load.d/*"
+FILES:${PN} += "${base_libdir}/*"
+FILES:${PN} += "${sysconfdir}/modules-load.d/*"
 
 PROVIDES = "kernel-module-8188eu${KERNEL_MODULE_PACKAGE_SUFFIX}"
-RPROVIDES_${PN} = "kernel-module-8188eu${KERNEL_MODULE_PACKAGE_SUFFIX}"
+RPROVIDES:${PN} = "kernel-module-8188eu${KERNEL_MODULE_PACKAGE_SUFFIX}"
 
 COMPATIBLE_MACHINE = "s32g2"
 

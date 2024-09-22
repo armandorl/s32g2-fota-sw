@@ -17,5 +17,5 @@ do_install() {
 	cp -f ${S}/wpa_supplicant.conf ${D}/home/root/wifi
 }
 
-FILES_${PN} += "/home/root/wifi"
+FILES:${PN} += "/home/root/wifi"
 

@@ -15,13 +15,13 @@ S = "${WORKDIR}/git/"
 MDIR = "${S}/sw/linux-pfeng"
 LIBBUILDDIR = "${S}/sw/xfci/libfci/build/release/"
 
-CFLAGS_prepend = "-I${S} "
+CFLAGS:prepend = "-I${S} "
  
 PACKAGES = "${PN} ${PN}-dev ${PN}-dbg ${PN}-staticdev"
 
-RDEPENDS_${PN}-staticdev = ""
-RDEPENDS_${PN}-dev = ""
-RDEPENDS_${PN}-dbg = ""
+RDEPENDS:${PN}-staticdev = ""
+RDEPENDS:${PN}-dev = ""
+RDEPENDS:${PN}-dbg = ""
  
 do_compile() {
 	cd ${MDIR}
