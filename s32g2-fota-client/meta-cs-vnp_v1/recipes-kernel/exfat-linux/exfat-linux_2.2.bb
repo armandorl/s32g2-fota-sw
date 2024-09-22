@@ -12,19 +12,19 @@ SRCREV = "5.8-1arter97"
 
 S = "${WORKDIR}/git"
 
-EXTRA_OEMAKE_append = " KDIR=${KBUILD_OUTPUT}"
+EXTRA_OEMAKE:append = " KDIR=${KBUILD_OUTPUT}"
 module_do_install() {
 	install -D exfat.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/fs/exfat/exfat.ko
 }
 
 KERNEL_MODULE_AUTOLOAD += "exfat"
 
-FILES_${PN} += "${base_libdir}/*"
-FILES_${PN} += "${sysconfdir}/modules-load.d/*"
+FILES:${PN} += "${base_libdir}/*"
+FILES:${PN} += "${sysconfdir}/modules-load.d/*"
 
 PROVIDES = "kernel-module-exfat${KERNEL_MODULE_PACKAGE_SUFFIX} \
 		kernel-module-exfat${KERNEL_MODULE_PACKAGE_SUFFIX}"
-RPROVIDES_${PN} = "kernel-module-exfat${KERNEL_MODULE_PACKAGE_SUFFIX} \
+RPROVIDES:${PN} = "kernel-module-exfat${KERNEL_MODULE_PACKAGE_SUFFIX} \
 		kernel-module-exfat${KERNEL_MODULE_PACKAGE_SUFFIX}"
 
 #COMPATIBLE_MACHINE = "gen1"

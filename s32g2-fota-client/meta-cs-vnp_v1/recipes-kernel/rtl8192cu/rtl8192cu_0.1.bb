@@ -19,7 +19,7 @@ S = "${WORKDIR}/git"
 MDIR = "${S}"
 INSTALL_DIR = "${D}/${base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/realtek/rtlwifi"
 
-EXTRA_OEMAKE_append = " KSRC=${KBUILD_OUTPUT}"
+EXTRA_OEMAKE:append = " KSRC=${KBUILD_OUTPUT}"
 
 module_do_install() {
         mkdir -p "${INSTALL_DIR}"
@@ -27,10 +27,10 @@ module_do_install() {
         cp -f ${MDIR}/8192cu.ko ${INSTALL_DIR}/8192cu.ko
 }
 
-FILES_${PN} += "${base_libdir}/*"
-FILES_${PN} += "${sysconfdir}/modules-load.d/*"
+FILES:${PN} += "${base_libdir}/*"
+FILES:${PN} += "${sysconfdir}/modules-load.d/*"
 
 PROVIDES = "kernel-module-8192cu${KERNEL_MODULE_PACKAGE_SUFFIX}"
-RPROVIDES_${PN} = "kernel-module-8192cu${KERNEL_MODULE_PACKAGE_SUFFIX}"
+RPROVIDES:${PN} = "kernel-module-8192cu${KERNEL_MODULE_PACKAGE_SUFFIX}"
 
 COMPATIBLE_MACHINE = "s32g2"

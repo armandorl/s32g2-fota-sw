@@ -12,7 +12,7 @@ SRC_URI = " \
 
 S = "${WORKDIR}/src"
 
-EXTRA_OEMAKE_append = " USR_INCDIR=\"${STAGING_INCDIR}\""
+EXTRA_OEMAKE:append = " USR_INCDIR=\"${STAGING_INCDIR}\""
 do_compile() {
     oe_runmake
 }
@@ -31,5 +31,5 @@ do_install() {
    	install -m 0666 ${WORKDIR}/fota_config/case1/S32G-RDB2/image/*.der ${D}${sysconfdir}/fota_config/case1/S32G-RDB2/image
 }
 
-FILES_${PN} = "${bindir}/* ${sysconfdir}"
-INSANE_SKIP_${PN} = "ldflags"
+FILES:${PN} = "${bindir}/* ${sysconfdir}"
+INSANE_SKIP:${PN} = "ldflags"
