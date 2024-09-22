@@ -132,7 +132,7 @@ class MysqlManager(object):
             sql = "update {table} set {values} where {condition}".format(table=table, values=update_data, condition=condition_data)
         else:
             sql = "update {table} set {values}".format(table=table, values=update_data)
-        print sql
+        print(sql)
 
         self.__cursor.execute(sql)
         self.__connect.commit()

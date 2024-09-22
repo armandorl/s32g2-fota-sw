@@ -1,2 +1,2 @@
 #python test_httpserver.py &
-python -i demo/start_servers.py
+python3 -i start_servers.py
