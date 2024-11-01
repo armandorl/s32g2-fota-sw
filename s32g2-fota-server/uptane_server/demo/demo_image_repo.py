@@ -27,7 +27,7 @@ import demo
 import uptane # Import before TUF modules; may change tuf.conf values.
 import uptane.formats
 import tuf.formats
-import xmlrpclib
+from xmlrpc import client
 import threading # for the interface for the demo website
 import os
 import sys, subprocess, time # For hosting and arguments
@@ -304,7 +304,7 @@ def test_fw_download_image(file):
   if os.path.isfile(image):
       with open (image,'rb') as handle:
         print ('read image')
-        return xmlrpclib.Binary(handle.read())
+        return client.Binary(handle.read())
       print('the image have been sent!!')
   else:
       print('no such file in directory')
